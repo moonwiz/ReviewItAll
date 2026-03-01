@@ -11,28 +11,48 @@
             Reviews
           </a>
           <ul class="dropdown-menu">
-             @if (categories.length > 0) {
-               @for (category of categories; track category) {
-                 <li><a class="dropdown-item" routerLink="/categories/{{ category.slug }}">{{ category.name }}</a></li>
-               }
-             } @else {
-               <li><a class="dropdown-item" routerLink="/categories/create">Please create a category first</a></li>
-             }
+            @if (categories.length > 0) {
+              <li>
+                <a class="dropdown-item" routerLink="/categories/">Create category</a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              @for (category of categories; track category.id) {
+                <li><a class="dropdown-item" routerLink="/categories/{{ category.slug }}">{{ category.name }}</a></li>
+              }
+            } @else {
+              <li><a class="dropdown-item" routerLink="/categories/create">Please create a category first</a></li>
+            }
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/reviews/create">Write a review</a>
         </li>
       </ul>
-      <!-- TODO: Search reviews
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+      <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </ul> -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            User
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button type="button" class="dropdown-item">Settings</button></li>
+            <li><button type="button" class="dropdown-item">Profile</button></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button type="button" class="dropdown-item" (click)="onLogout()">Log out</button></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
 
-<div class="ps-2 pe-2 pt-3">
-  <router-outlet></router-outlet>
+<div class="container mt-4">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
 </div>

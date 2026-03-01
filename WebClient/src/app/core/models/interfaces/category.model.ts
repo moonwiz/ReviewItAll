@@ -2,7 +2,7 @@ export interface Category {
   id: number;
   parentId: number;
   userId: number;
-  name: string | null;
+  name: string;
   description: string | null;
-  imageId: number | null;
+  filename: string | null;
 }
